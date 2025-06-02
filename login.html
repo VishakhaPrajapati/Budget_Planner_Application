@@ -1,0 +1,19 @@
+<div class="card p-4 mx-auto login-card">
+    <h3 class="mb-3 text-center">{{ isRegistering ? 'Register' : 'Login' }}</h3>
+
+    <div ng-show="!isRegistering">
+        <input type="text" class="form-control mb-2" placeholder="Username" ng-model="username">
+        <input type="password" class="form-control mb-3" placeholder="Password" ng-model="password">
+        <button class="btn btn-primary btn-block mb-2" ng-click="login()">Login</button>
+    </div>
+
+    <div ng-show="isRegistering">
+        <input type="text" class="form-control mb-2" placeholder="New Username" ng-model="registerUsername">
+        <input type="password" class="form-control mb-3" placeholder="New Password" ng-model="registerPassword">
+        <button class="btn btn-success btn-block mb-2" ng-click="register()">Register</button>
+    </div>
+
+    <button class="btn btn-link btn-sm" ng-click="toggleForm()">
+        {{ isRegistering ? 'Already have an account? Login' : 'New user? Register' }}
+    </button>
+</div>

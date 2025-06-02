@@ -1,0 +1,76 @@
+<body ng-class="{'dark-mode': darkMode}">
+
+        <!-- Currency Selector -->
+    <div class="mb-3">
+        <label>Select Currency:</label>
+        <select class="form-control" ng-model="currency" ng-options="c for c in currencies" ng-change="updateCurrency()" placeholder="Select Currency">
+        </select>
+    </div>
+
+        <!-- Transaction Form -->
+        <div class="card p-3 mb-3">
+            <h5>Add Transaction</h5>
+            <select class="form-control mb-2" ng-model="transactionType">
+                <option value="income">Income</option>
+                <option value="expense">Expense</option>
+            </select>
+            <input type="number" class="form-control mb-2" ng-model="amount" placeholder="Amount">
+            <select class="form-control mb-2" ng-model="category">
+                <option value="">-- Select Categories --</option>
+                <option ng-repeat="cat in categories">{{cat}}</option>
+            </select>
+            <textarea class="form-control mb-2" ng-model="note" placeholder="Note (optional)"></textarea>
+            <input type="date" class="form-control mb-2" ng-model="reminderDate" placeholder="Reminder (optional)">
+            <button class="btn btn-primary" ng-click="addTransaction()">Add</button>
+        </div>
+
+        <!-- Filters -->
+        <div class="row mb-3">
+            <div class="col">
+                <select class="form-control" ng-model="filterCategory">
+                    <option value="">All Categories</option>
+                    <option ng-repeat="cat in categories">{{cat}}</option>
+                </select>
+            </div>
+            <div class="col">
+                <input type="date" class="form-control" ng-model="filterDate">
+            </div>
+        </div>
+
+        <!-- Transaction History Table -->
+        <div class="card p-3">
+  <h5>Transaction History</h5>
+  <div class="responsive-table-wrapper">
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>Date</th>
+          <th>Type</th>
+          <th>Amount</th>
+          <th>Category</th>
+          <th>Note</th>
+          <th>Reminder</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr ng-repeat="t in transactions | filter:filterTransactions">
+          <td data-label="Date">{{t.date | date:'yyyy-MM-dd'}}</td>
+          <td data-label="Type">{{t.type}}</td>
+          <td data-label="Amount">{{t.amount}} {{t.currency}}</td>
+          <td data-label="Category">{{t.category}}</td>
+          <td data-label="Note">{{t.note}}</td>
+          <td data-label="Reminder">{{t.reminder}}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+
+        <!-- Balance Summary -->
+        <div class="card p-3 mt-3">
+            <h5>💰 Balance: {{getBalance()}} {{currency}}</h5>
+        </div>
+
+    </div>
+</body>
