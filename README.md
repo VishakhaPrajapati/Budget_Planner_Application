@@ -20,5 +20,3 @@ A simple yet powerful budget management tool built using AngularJS, HTML, and CS
 
  localStorage for data persistence
 
-📽️ Demo
-![Budget_Planner.mp4]
