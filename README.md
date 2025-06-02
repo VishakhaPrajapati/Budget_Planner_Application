@@ -20,3 +20,4 @@ A simple yet powerful budget management tool built using AngularJS, HTML, and CS
 
  localStorage for data persistence
 
+ Deploy Link: [https://budget-planner-vishakha.netlify.app/]
